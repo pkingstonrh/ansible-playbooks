@@ -80,33 +80,7 @@
       - A
       - B
 
-  - name: Create VM Extension
-    azure_rm_virtualmachine_extension:
-      resource_group: "{{ resource_group }}"
-      name: testVMExtension
-      virtual_machine_name: "{{ vm_name }}{{ item }}"
-      publisher: Microsoft.Azure.Extensions
-      virtual_machine_extension_type: CustomScript
-      type_handler_version: 2.0
-      auto_upgrade_minor_version: true
-      settings: {"commandToExecute": "sudo apt-get -y install apache2"}
-    loop:
-      - A
-      - B
-
-  - name: Create VM Extension
-    azure_rm_virtualmachine_extension:
-      resource_group: "{{ resource_group }}"
-      name: testVMExtension
-      virtual_machine_name: "{{ vm_name }}{{ item }}"
-      publisher: Microsoft.Azure.Extensions
-      virtual_machine_extension_type: CustomScript
-      type_handler_version: 2.0
-      auto_upgrade_minor_version: true
-      settings: {"commandToExecute": "printf '<html><body><h1>Image {{ item }}</h1></body></html>' >> index.html; sudo cp index.html /var/www/html/"}
-    loop:
-      - A
-      - B
+# AUTOMATION GOES HERE. INSTALL YOUR SERVER, DO YO THANG
 
   - debug:
       msg: "Public IP Address A: {{ pip_output.results[0].state.ip_address }}"
