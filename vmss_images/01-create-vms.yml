@@ -1,7 +1,7 @@
 # Description
 # ===========
 # This playbook creates two VMS with HTTPD and all the prerequisites.
-
+---
 - name: Create two VMs (A and B) with HTTPS
   hosts: localhost
   connection: local
