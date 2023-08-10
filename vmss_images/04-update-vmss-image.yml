@@ -2,7 +2,7 @@
 # ===========
 # This playbook updates image reference in Virtual Machine Scaleset.
 # This sample requires Ansible 2.8
-
+---
 - name: Update VMSS Image Referece
   hosts: localhost
   connection: local
