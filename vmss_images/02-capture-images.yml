@@ -1,7 +1,7 @@
 # Description
 # ===========
 # This playbook creates an Azure VM with public IP, and then dumps it using facts
-
+---
 - name: Capture VM Images
   hosts: localhost
   connection: local
