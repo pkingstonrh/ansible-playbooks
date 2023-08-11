@@ -6,8 +6,15 @@
 - name: Update VMSS Image Referece
   hosts: localhost
   connection: local
+  vars:
+    vmss_name: "tf-{{ word }}-web-vmss"
   tasks:
-
+  - name: Delete VMSS
+    azure_rm_virtualmachinescaleset:
+      resource_group: "{{ deployment_resource_group_name }}"
+      name: "{{ vmss_name }}"
+    state: absent
+    
   - name: Update VMSS with image
     azure_rm_virtualmachinescaleset:
       resource_group: "{{ deployment_resource_group_name }}"
@@ -15,6 +22,9 @@
       admin_username: "{{ admin_default_username }}"
       admin_password: "{{ admin_default_password }}"
       capacity: "{{ capacity }}"
+      vm_size: Standard_B2s
+      virtual_network_name: "tf-{{ word }}-network"
+      subnet_name: "tf-{{ word }}-web_tier_sub"
       upgrade_policy: Manual
       platform_fault_domain_count: null
       image:
