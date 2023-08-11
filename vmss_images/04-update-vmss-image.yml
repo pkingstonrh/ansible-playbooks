@@ -9,11 +9,12 @@
   vars:
     vmss_name: "tf-{{ word }}-web-vmss"
   tasks:
+
   - name: Delete VMSS
     azure_rm_virtualmachinescaleset:
       resource_group: "{{ deployment_resource_group_name }}"
       name: "{{ vmss_name }}"
-    state: absent
+      state: absent
     
   - name: Update VMSS with image
     azure_rm_virtualmachinescaleset:
